@@ -1,0 +1,22 @@
+<h3>Hi: <%= @name.first_name %> <%= @name.last_name %></h3> 
+<a href="/dashboards">Go to Dashboard</a>
+<a href="/sessions" data-method='delete'>Logout</a>
+<center><p>All Products</p></center>
+<table>
+	<tr>
+	<th>Products</th>
+	<th>Seller</th>
+	<th>Date Posted</th>
+	<th>Amount</th>
+	<th>Action</th>
+	</tr>
+<% @products.each do |p| %>
+	<tr>
+	<td><%= p.product%></td>
+	<td><%= p.user.first_name %> <%= p.user.last_name %></td>
+	<td><%= p.created_at.strftime("%b %d, %Y") %></td>
+	<td>$<%= p.amount %></td>
+	<td><a href="/solds/<%= p.id %>">Buy</a></td>
+	</tr>
+	<% end %>
+</table>
